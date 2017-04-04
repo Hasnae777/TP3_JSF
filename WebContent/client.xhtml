@@ -1,0 +1,85 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:p="http://primefaces.org/ui">
+      
+
+	<h:head>
+	
+	</h:head>
+	<h:body>
+	
+	<h2>
+	BIENVENUE CLIENT
+	</h2>
+	<h:form>
+	     		Nom:<h:inputText id="nom" 
+	     						title="nom:" 
+	     						required="true"
+	     						requiredMessage="champ nom khawiii"
+	     						value="#{data.nom}"
+	     						validatorMessage="entre 3 et 8"
+	     						 >
+	     						      <f:validateRegex pattern="[a-z A-Z]{3,8}"></f:validateRegex></h:inputText>
+	     						<br />
+	     		
+	     		Prenom:<h:inputText id="prenom"
+	     						 title="prenom:" 
+	     						 requiredMessage="champ prenom khawiii"
+	     						 
+	     						 required="true"
+	     						 validatorMessage="entre 3 et 8"
+	     						 
+	     						 value="#{data.prenom}">  <f:validateRegex pattern="[a-z A-Z]{3,8}"></f:validateRegex></h:inputText><br />
+	     		
+	     		Age:<h:inputText id="age" 
+	     						title="age:" 
+	     						required="true"
+	     						requiredMessage="champ age khawiii"
+	     						
+	     						value="#{data.age}" 
+	     						validatorMessage="age khas ikon entre 18 et 90"
+	     						> 
+	     						
+	     						<f:validateLongRange minimum="18" maximum="90"></f:validateLongRange>
+	     						</h:inputText><br />
+	     		
+                <h:commandButton id="submit" value="Submit"
+                                 action="#{data.remplir()}"/>
+                 <h:messages for="nom"/>  
+                 <h:messages for="prenom"/>  
+                 <h:messages for="age"/>     
+                            
+	</h:form>
+	
+	<h:dataTable value="#{data.list}" var="o"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-odd-row,order-table-even-row"
+    		>
+
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">nom</f:facet>
+    				<!-- row record -->
+    				#{o.nom}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">prenom</f:facet>
+    				#{o.prenom}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">age</f:facet>
+    				#{o.age}
+    			</h:column>
+
+    			
+    		</h:dataTable>
+</h:body>
+
+</html>
